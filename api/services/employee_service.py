@@ -64,4 +64,5 @@ def list_all() -> list[dict]:
     response = table.query(KeyConditionExpression=Key("PK").eq("USER"))
     return response["Items"]
 
-    
+def delete(employee_id: str) -> None:
+    table.delete_item(Key={"PK": "USER", "SK": employee_id})
